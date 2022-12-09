@@ -1,6 +1,7 @@
 import UIKit
 
-class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController {
+    private let ShowSingleImageSegueIdentifier = "ShowSingleImage"
     
     @IBOutlet private var tableView: UITableView!
     
@@ -17,6 +18,17 @@ class ImagesListViewController: UIViewController {
         super.viewDidLoad()
         
         photosName = Array(0..<20).map{ "\($0)" } //создаёт массив чисел от 0 до 19 и возвращает массив строк
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ShowSingleImageSegueIdentifier { //проверяем идентификатор сегвея, поскольку может быть больше одного сегвея, выходящего из нашего контроллера
+            let viewController = segue.destination as! SingleImageViewController //Делаем преобразования типа для свойства
+            let indexPath = sender as! IndexPath //Делаем преобразование типа для аргумента sender
+            let image = UIImage(named: photosName[indexPath.row]) //получаем картинку
+            viewController.image = image //передаем картинку
+        } else {
+            super.prepare(for: segue, sender: sender) //Если это неизвестный сегвей, есть вероятность, что он был определён суперклассом. В таком случае мы должны передать ему управление.
+        }
     }
     
 }
@@ -59,6 +71,8 @@ extension ImagesListViewController: UITableViewDataSource {
 
 extension ImagesListViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: ShowSingleImageSegueIdentifier, sender: indexPath)
+    }
     
 }
