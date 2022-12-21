@@ -127,7 +127,7 @@ YP Black</string>
                     <tabBarItem key="tabBarItem" title="" image="tab_editorial_active" id="CGC-NC-cVu"/>
                     <navigationItem key="navigationItem" id="Vsg-ed-9tH"/>
                     <connections>
-                        <outlet property="tableView" destination="JB0-QR-WO4" id="DeU-Uh-nMh"/>
+                        <outlet property="tableView" destination="JB0-QR-WO4" id="Q9Y-Kg-yW1"/>
                         <segue destination="U5W-wz-bku" kind="presentation" identifier="ShowSingleImage" id="p1X-4I-FLo"/>
                     </connections>
                 </viewController>
@@ -146,15 +146,15 @@ YP Black</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJA-Gr-Td2">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="QYX-3D-Y1I" userLabel="photo">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="316" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="QYX-3D-Y1I" userLabel="photo">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="316"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="QYX-3D-Y1I" secondAttribute="trailing" id="9k7-Pl-CA2"/>
-                                    <constraint firstItem="QYX-3D-Y1I" firstAttribute="top" secondItem="TJA-Gr-Td2" secondAttribute="topMargin" id="RFT-yT-M3S"/>
-                                    <constraint firstItem="QYX-3D-Y1I" firstAttribute="leading" secondItem="TJA-Gr-Td2" secondAttribute="leadingMargin" id="WtT-3I-5wn"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="QYX-3D-Y1I" secondAttribute="bottom" id="akK-k6-LOV"/>
+                                    <constraint firstAttribute="trailing" secondItem="QYX-3D-Y1I" secondAttribute="trailing" id="9k7-Pl-CA2"/>
+                                    <constraint firstItem="QYX-3D-Y1I" firstAttribute="top" secondItem="TJA-Gr-Td2" secondAttribute="top" id="RFT-yT-M3S"/>
+                                    <constraint firstItem="QYX-3D-Y1I" firstAttribute="leading" secondItem="TJA-Gr-Td2" secondAttribute="leading" id="WtT-3I-5wn"/>
+                                    <constraint firstAttribute="bottom" secondItem="QYX-3D-Y1I" secondAttribute="bottom" id="akK-k6-LOV"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Mvt-q9-Gcb"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="dKb-oK-9g5"/>

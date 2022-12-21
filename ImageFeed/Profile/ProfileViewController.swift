@@ -8,6 +8,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var InfoLabel: UILabel!
     
     @IBOutlet weak var ExitButton: UIButton!
+    
     @IBAction func tapExitButton(_ sender: Any) {
         
     }
