@@ -138,13 +138,13 @@ YP Black</string>
         <!--Single Image View Controller-->
         <scene sceneID="78W-s2-4uC">
             <objects>
-                <viewController id="U5W-wz-bku" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="U5W-wz-bku" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n6S-Z7-M4b">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJA-Gr-Td2">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="316" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="QYX-3D-Y1I" userLabel="photo">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="316"/>
@@ -163,7 +163,7 @@ YP Black</string>
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhM-6g-nKm" userLabel="Share">
-                                <rect key="frame" x="170" y="701" width="50" height="50"/>
+                                <rect key="frame" x="170" y="724" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="JMr-Dz-Xgw"/>
                                     <constraint firstAttribute="height" constant="50" id="Yqc-nu-1Zf"/>
