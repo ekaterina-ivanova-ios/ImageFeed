@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
         //MARK: settingUserNameLabel
         let UserNameLabel = UILabel()
         UserNameLabel.text = "Екатерина Новикова"
-        UserNameLabel.textColor = .white
+        UserNameLabel.textColor = .ypWhite
         UserNameLabel.font = UserNameLabel.font.withSize(23)
         view.addSubview(UserNameLabel)
         UserNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
         //MARK: settingUserIdLabel
         let UserIdLabel = UILabel()
         UserIdLabel.text = "@ekaterina_nov"
-        UserIdLabel.textColor = .gray
+        UserIdLabel.textColor = .ypGray
         UserIdLabel.font = UserNameLabel.font.withSize(13)
         view.addSubview(UserIdLabel)
         UserIdLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
         //MARK: settingInfoLabel
         let InfoLabel = UILabel()
         InfoLabel.text = "Hello, world!"
-        InfoLabel.textColor = .white
+        InfoLabel.textColor = .ypWhite
         InfoLabel.font = UserNameLabel.font.withSize(13)
         view.addSubview(InfoLabel)
         InfoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,13 +54,15 @@ class ProfileViewController: UIViewController {
             target: self,
             action: #selector(Self.tapLogOutButton)
             )
-        logOutButton.tintColor = .systemRed
+        logOutButton.tintColor = .ypRed
         view.addSubview(logOutButton)
         logOutButton.translatesAutoresizingMaskIntoConstraints = false
         logOutButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         logOutButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        logOutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        logOutButton.centerYAnchor.constraint(equalTo: ImageProfile.centerYAnchor).isActive = true
+        //or
+        //logOutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
     }
 
     @objc
