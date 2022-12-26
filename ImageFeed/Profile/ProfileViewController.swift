@@ -61,8 +61,7 @@ class ProfileViewController: UIViewController {
         logOutButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
         logOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         logOutButton.centerYAnchor.constraint(equalTo: ImageProfile.centerYAnchor).isActive = true
-        //or
-        //logOutButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+
     }
 
     @objc
