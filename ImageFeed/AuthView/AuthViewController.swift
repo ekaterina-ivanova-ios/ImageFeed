@@ -38,13 +38,13 @@ class AuthViewController: UIViewController {
         button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
     }
     
-    @objc
-    func tappedButton() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let newScreen = storyboard.instantiateViewController(identifier: "WebViewViewController") as? WebViewViewController else {return}
-        
-        show(newScreen, sender: nil)
-        
-    }
+     @objc
+     func tappedButton() {
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         guard let newScreen = storyboard.instantiateViewController(identifier: "WebViewViewController") as? WebViewViewController else {return}
+         
+         show(newScreen, sender: nil)
+         
+     }
     
 }
