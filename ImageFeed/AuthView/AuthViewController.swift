@@ -41,7 +41,7 @@ class AuthViewController: UIViewController {
      @objc
      func tappedButton() {
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         guard let newScreen = storyboard.instantiateViewController(identifier: "WebViewViewController") as? WebViewViewController else {return}
+         guard let newScreen = storyboard.instantiateViewController(identifier: "WebViewController") as? WebViewController else {return}
          
          show(newScreen, sender: nil)
          

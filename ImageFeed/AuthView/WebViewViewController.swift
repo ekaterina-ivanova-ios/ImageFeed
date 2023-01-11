@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController: UIViewController {
+class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
