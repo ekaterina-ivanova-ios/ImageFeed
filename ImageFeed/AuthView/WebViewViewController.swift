@@ -1,44 +1,67 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
-    
+fileprivate let UnsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
+
+protocol WebViewViewControllerDelegate: AnyObject {
+    func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
+    func webViewViewControllerDidCancel(_ vc: WebViewViewController)
+}
+
+class WebViewViewController: UIViewController {
+    @IBOutlet private var webView: WKWebView!
+
+    weak var delegate: WebViewViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .ypWhite
-        setUpBackButton()
-        
-    }
- 
-    func setUpWebView() {
-        let webView = WKWebView()
-        webView.backgroundColor = .ypWhite
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-    }
-    
-    func setUpBackButton() {
-        let button = UIButton.systemButton(
-            with: UIImage(named: "nav_back_button_white")!,
-            target: self,
-            action: #selector(Self.tappedButton)
-            )
-        button.tintColor = .ypBlack
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        button.topAnchor.constraint(equalTo: view.topAnchor, constant: 59).isActive = true
 
+        webView.navigationDelegate = self
+
+        var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: AccessKey),
+            URLQueryItem(name: "redirect_uri", value: RedirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: AccessScope)
+        ]
+        let url = urlComponents.url!
+
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
-    
-    @objc
-    func tappedButton() {
-        
+
+    @IBAction private func didTapBackButton(_ sender: Any?) {
+        delegate?.webViewViewControllerDidCancel(self)
     }
-    
+}
+
+extension WebViewViewController: WKNavigationDelegate {
+    func webView(
+        _ webView: WKWebView,
+        decidePolicyFor navigationAction: WKNavigationAction,
+        decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
+    ) {
+        if let code = code(from: navigationAction) {
+            delegate?.webViewViewController(self, didAuthenticateWithCode: code)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+
+    private func code(from navigationAction: WKNavigationAction) -> String? {
+        if
+            let url = navigationAction.request.url,
+            let urlComponents = URLComponents(string: url.absoluteString),
+            urlComponents.path == "/oauth/authorize/native",
+            let items = urlComponents.queryItems,
+            let codeItem = items.first(where: { $0.name == "code" })
+        {
+            return codeItem.value
+        } else {
+            return nil
+        }
+    }
+   
 }
