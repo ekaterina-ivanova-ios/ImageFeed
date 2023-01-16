@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5oG-Wf-s2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L8w-B0-4D3">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -319,20 +319,28 @@ YP Black</string>
                                     <action selector="didTapBackButton:" destination="U5W-wz-bku" eventType="touchUpInside" id="Enl-au-HZ4"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rPe-Z7-aNN">
+                                <rect key="frame" x="0.0" y="103" width="390" height="4"/>
+                                <color key="tintColor" name="YP Black"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CqY-V8-WGx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GNC-N2-g3C" firstAttribute="leading" secondItem="Rmo-5T-1Zi" secondAttribute="leading" id="0dh-l7-e8A"/>
+                            <constraint firstItem="rPe-Z7-aNN" firstAttribute="leading" secondItem="Rmo-5T-1Zi" secondAttribute="leading" id="1rs-81-b64"/>
                             <constraint firstItem="UkP-Ha-I9c" firstAttribute="top" secondItem="CqY-V8-WGx" secondAttribute="top" constant="8" id="KdM-f2-top"/>
                             <constraint firstAttribute="bottom" secondItem="GNC-N2-g3C" secondAttribute="bottom" id="Rsa-hm-q1P"/>
+                            <constraint firstItem="rPe-Z7-aNN" firstAttribute="top" secondItem="UkP-Ha-I9c" secondAttribute="bottom" id="ftZ-6f-Jpf"/>
                             <constraint firstItem="UkP-Ha-I9c" firstAttribute="leading" secondItem="CqY-V8-WGx" secondAttribute="leading" constant="8" id="kJy-DM-3Ql"/>
+                            <constraint firstAttribute="trailing" secondItem="rPe-Z7-aNN" secondAttribute="trailing" id="vcc-g1-EKl"/>
                             <constraint firstAttribute="trailing" secondItem="GNC-N2-g3C" secondAttribute="trailing" id="wmk-Ag-oPt"/>
                             <constraint firstItem="GNC-N2-g3C" firstAttribute="top" secondItem="Rmo-5T-1Zi" secondAttribute="top" id="yDu-St-vqO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DW2-Pv-zTS"/>
                     <connections>
+                        <outlet property="progressView" destination="rPe-Z7-aNN" id="Yih-bx-d6F"/>
                         <outlet property="webView" destination="GNC-N2-g3C" id="Blf-Yh-Bj3"/>
                     </connections>
                 </viewController>
@@ -356,12 +364,41 @@ YP Black</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGq-Wc-xbv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1351" y="889"/>
+            <point key="canvasLocation" x="-1438" y="889"/>
+        </scene>
+        <!--Unsplash-->
+        <scene sceneID="D5Y-AW-OiR">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="L8w-B0-4D3" customClass="SplashViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5bg-aP-aQR">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-1B-KU0">
+                                <rect key="frame" x="157.66666666666666" y="383" width="75" height="78"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TRj-Vg-G8T"/>
+                        <color key="backgroundColor" red="0.1019607843" green="0.1058823529" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="U0S-1B-KU0" firstAttribute="centerY" secondItem="5bg-aP-aQR" secondAttribute="centerY" id="WFF-XI-rJz"/>
+                            <constraint firstItem="U0S-1B-KU0" firstAttribute="centerX" secondItem="5bg-aP-aQR" secondAttribute="centerX" id="hvS-Cn-GQU"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Unsplash" id="JyP-C6-BKP"/>
+                    <connections>
+                        <segue destination="5oG-Wf-s2O" kind="presentation" identifier="ShowAuthenticationScreen" modalPresentationStyle="fullScreen" id="rSu-h3-hlL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFA-p9-GfH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2235" y="889"/>
         </scene>
     </scenes>
     <resources>
         <image name="0" width="2000" height="1335"/>
         <image name="Vector" width="60" height="60"/>
+        <image name="launchScreenIcon" width="75" height="78"/>
         <image name="nav_back_button" width="24" height="24"/>
         <image name="nav_back_button_white" width="24" height="24"/>
         <image name="noActive" width="42" height="42"/>
