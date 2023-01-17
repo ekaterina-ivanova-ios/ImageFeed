@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F25864B29756144004294EA /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864A29756144004294EA /* OAuth2Service.swift */; };
+		1F25864D29756157004294EA /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864C29756157004294EA /* OAuth2TokenStorage.swift */; };
+		1F258650297566C8004294EA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864F297566C7004294EA /* SplashViewController.swift */; };
 		1F276154292C000800B993CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F276153292C000800B993CD /* AppDelegate.swift */; };
 		1F276156292C000800B993CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F276155292C000800B993CD /* SceneDelegate.swift */; };
 		1F276158292C000800B993CD /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F276157292C000800B993CD /* ImagesListViewController.swift */; };
@@ -14,12 +17,18 @@
 		1F27615D292C000900B993CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F27615C292C000900B993CD /* Assets.xcassets */; };
 		1F276160292C000900B993CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F27615E292C000900B993CD /* LaunchScreen.storyboard */; };
 		1F276188292D091C00B993CD /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F276187292D091C00B993CD /* ImagesListCell.swift */; };
+		1F2AC0A1295D86D4007B5B88 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AC0A0295D86D4007B5B88 /* Constants.swift */; };
+		1F2AC0A42969A5B1007B5B88 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AC0A32969A5B1007B5B88 /* AuthViewController.swift */; };
+		1F2AC0A62969B954007B5B88 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AC0A52969B954007B5B88 /* WebViewViewController.swift */; };
 		1FAA12932938CA5B000ED239 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA12922938CA5B000ED239 /* ProfileViewController.swift */; };
 		1FAA129529433F35000ED239 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA129429433F35000ED239 /* SingleImageViewController.swift */; };
 		1FCBB8ED2955B0670079F3C8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBB8EC2955B0670079F3C8 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F25864A29756144004294EA /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
+		1F25864C29756157004294EA /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
+		1F25864F297566C7004294EA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1F276150292C000800B993CD /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F276153292C000800B993CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F276155292C000800B993CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +38,9 @@
 		1F27615F292C000900B993CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F276161292C000900B993CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F276187292D091C00B993CD /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
+		1F2AC0A0295D86D4007B5B88 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1F2AC0A32969A5B1007B5B88 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		1F2AC0A52969B954007B5B88 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		1FAA12922938CA5B000ED239 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1FAA129429433F35000ED239 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		1FCBB8EC2955B0670079F3C8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -45,6 +57,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F25864829756119004294EA /* ServiceAccessLayer */ = {
+			isa = PBXGroup;
+			children = (
+				1F25864929756120004294EA /* OAuth2 */,
+			);
+			path = ServiceAccessLayer;
+			sourceTree = "<group>";
+		};
+		1F25864929756120004294EA /* OAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				1F25864A29756144004294EA /* OAuth2Service.swift */,
+				1F25864C29756157004294EA /* OAuth2TokenStorage.swift */,
+			);
+			path = OAuth2;
+			sourceTree = "<group>";
+		};
+		1F25864E297566B2004294EA /* SplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1F25864F297566C7004294EA /* SplashViewController.swift */,
+			);
+			path = SplashViewController;
+			sourceTree = "<group>";
+		};
 		1F276147292C000800B993CD = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +101,10 @@
 		1F276152292C000800B993CD /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				1F25864E297566B2004294EA /* SplashViewController */,
+				1F25864829756119004294EA /* ServiceAccessLayer */,
+				1F2AC0A22969A59D007B5B88 /* AuthView */,
+				1F2AC09F295D86BC007B5B88 /* Keys */,
 				1FCBB8EB2955B0520079F3C8 /* Helpers */,
 				1F27618A292D09AA00B993CD /* AppsSetting */,
 				1F276189292D099600B993CD /* ImagesList */,
@@ -93,6 +134,23 @@
 				1F276155292C000800B993CD /* SceneDelegate.swift */,
 			);
 			path = AppsSetting;
+			sourceTree = "<group>";
+		};
+		1F2AC09F295D86BC007B5B88 /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				1F2AC0A0295D86D4007B5B88 /* Constants.swift */,
+			);
+			path = Keys;
+			sourceTree = "<group>";
+		};
+		1F2AC0A22969A59D007B5B88 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				1F2AC0A32969A5B1007B5B88 /* AuthViewController.swift */,
+				1F2AC0A52969B954007B5B88 /* WebViewViewController.swift */,
+			);
+			path = AuthView;
 			sourceTree = "<group>";
 		};
 		1FAA12912938CA42000ED239 /* Profile */ = {
@@ -190,12 +248,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F25864D29756157004294EA /* OAuth2TokenStorage.swift in Sources */,
+				1F2AC0A62969B954007B5B88 /* WebViewViewController.swift in Sources */,
 				1FAA12932938CA5B000ED239 /* ProfileViewController.swift in Sources */,
+				1F2AC0A1295D86D4007B5B88 /* Constants.swift in Sources */,
 				1F276158292C000800B993CD /* ImagesListViewController.swift in Sources */,
+				1F25864B29756144004294EA /* OAuth2Service.swift in Sources */,
+				1F258650297566C8004294EA /* SplashViewController.swift in Sources */,
 				1FCBB8ED2955B0670079F3C8 /* Color.swift in Sources */,
 				1F276188292D091C00B993CD /* ImagesListCell.swift in Sources */,
 				1F276154292C000800B993CD /* AppDelegate.swift in Sources */,
 				1FAA129529433F35000ED239 /* SingleImageViewController.swift in Sources */,
+				1F2AC0A42969A5B1007B5B88 /* AuthViewController.swift in Sources */,
 				1F276156292C000800B993CD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
