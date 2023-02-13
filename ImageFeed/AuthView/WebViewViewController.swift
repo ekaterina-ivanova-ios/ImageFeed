@@ -18,22 +18,27 @@ class WebViewViewController: UIViewController {
         super.viewDidLoad()
 
         webView.navigationDelegate = self
-
-        var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AccessKey),
-            URLQueryItem(name: "redirect_uri", value: RedirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: AccessScope)
-        ]
-        let url = urlComponents.url!
-
-        let request = URLRequest(url: url)
-        webView.load(request)
+        fetchRequest()
+        
     }
 
     @IBAction private func didTapBackButton(_ sender: Any?) {
         delegate?.webViewViewControllerDidCancel(self)
+    }
+    
+    private func fetchRequest() {
+        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString) else { return }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: Constants.accessScope)
+        ]
+        
+        guard let url = urlComponents.url else { return }
+
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
     
     override func viewDidAppear(_ animated: Bool) {

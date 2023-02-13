@@ -1,27 +1,27 @@
 import UIKit
-import  ProgressHUD
 
 final class SplashViewController: UIViewController {
     private let ShowAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
-
+    private let profileService = ProfileService()
+    
     private let oauth2Service = OAuth2Service()
     private let oauth2TokenStorage = OAuth2TokenStorage()
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         if oauth2TokenStorage.token != nil {switchToTabBarController()} else {performSegue(withIdentifier: ShowAuthenticationScreenSegueIdentifier, sender: nil)}
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
-
+    
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
@@ -61,9 +61,10 @@ extension SplashViewController: AuthViewControllerDelegate {
                 self.switchToTabBarController()
                 UIBlockingProgressHUD.dismiss()
             case .failure:
+                // TODO [Sprint 11]
                 UIBlockingProgressHUD.dismiss()
-                // TODO Показать ошибку
             }
         }
     }
 }
+

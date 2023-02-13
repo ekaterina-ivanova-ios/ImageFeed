@@ -4,6 +4,7 @@ final class OAuth2Service {
     private let urlSession = URLSession.shared
         
         private var task: URLSessionTask?
+    //Переменная для хранения значения code, которое было передано в последнем созданном запросе
         private var lastCode: String?
         
         func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
