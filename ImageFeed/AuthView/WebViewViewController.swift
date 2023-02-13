@@ -8,22 +8,38 @@ protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
-class WebViewViewController: UIViewController {
+final class WebViewViewController: UIViewController {
+    //MARK: - Properties
     @IBOutlet private var webView: WKWebView!
     @IBOutlet private var progressView: UIProgressView!
 
     weak var delegate: WebViewViewControllerDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        webView.navigationDelegate = self
-        fetchRequest()
-        
+    private var estimatedProgressObservation: NSKeyValueObservation?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureBackBarButton()
+        webView.navigationDelegate = self
+        fetchRequest()
+        estimatedProgressObservation = webView.observe(
+            \.estimatedProgress,
+             options: [],
+             changeHandler: { [weak self] _, _ in
+                 guard let self = self else { return }
+                 self.updateProgress()
+             }
+        )
+    }
+
+    //MARK: - Helpers
     @IBAction private func didTapBackButton(_ sender: Any?) {
         delegate?.webViewViewControllerDidCancel(self)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     private func fetchRequest() {
@@ -43,8 +59,6 @@ class WebViewViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // NOTE: Since the class is marked as `final` we don't need to pass a context.
-        // In case of inhertiance context must not be nil.
         webView.addObserver(
             self,
             forKeyPath: #keyPath(WKWebView.estimatedProgress),
@@ -71,8 +85,21 @@ class WebViewViewController: UIViewController {
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
     
+    private func configureBackBarButton() {
+        let backButtonView = UIView(frame: CGRect(x: 0, y: 0, width: 64, height: 44))
+        let imageView = UIImageView(image: .ypBackBarButtonImage)
+        imageView.frame = CGRect(x: 12, y: 16, width: 8.97, height: 15.59)
+        imageView.image = imageView.image!.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .ypBlack
+        backButtonView.addSubview(imageView)
+        backButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapBackButton)))
+        let barButton = UIBarButtonItem(customView: backButtonView)
+        navigationItem.leftBarButtonItem = barButton
+    }
+    
 }
 
+//MARK: - WKNavigationDelegate
 extension WebViewViewController: WKNavigationDelegate {
     func webView(
         _ webView: WKWebView,
