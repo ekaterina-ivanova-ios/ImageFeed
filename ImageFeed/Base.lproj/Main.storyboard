@@ -29,19 +29,15 @@ YP Black</string>
                             </color>
                         </tabBarAppearance>
                     </tabBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kQz-C0-prN"/>
-                        <segue destination="Byu-G1-KI1" kind="relationship" relationship="viewControllers" id="VMq-f7-Xvg"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQE-I0-MbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1408" y="-172"/>
+            <point key="canvasLocation" x="-1269" y="-600"/>
         </scene>
         <!--ImageList-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="ImageList" id="BYZ-38-t0r" customClass="ImagesListViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImagesListViewController" title="ImageList" id="BYZ-38-t0r" customClass="ImagesListViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,7 +215,7 @@ YP Black</string>
         <!--Profile-->
         <scene sceneID="1Cy-D4-3tf">
             <objects>
-                <viewController id="Byu-G1-KI1" userLabel="Profile" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="Byu-G1-KI1" userLabel="Profile" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7on-gy-1qH">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,7 +383,7 @@ YP Black</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vqd-ug-HAO" kind="relationship" relationship="rootViewController" id="zqW-Xz-bmX"/>
+                        <segue destination="vqd-ug-HAO" kind="relationship" relationship="rootViewController" id="cFf-Px-hwf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fY-aY-RWi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
