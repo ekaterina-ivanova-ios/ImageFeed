@@ -212,25 +212,6 @@ YP Black</string>
             </objects>
             <point key="canvasLocation" x="609" y="-600"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="1Cy-D4-3tf">
-            <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="Byu-G1-KI1" userLabel="Profile" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7on-gy-1qH">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ktJ-LD-m4P"/>
-                        <color key="backgroundColor">
-                            <string key="name">
-YP Black</string>
-                        </color>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_profile_active" id="qOL-Ef-tJ5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WqP-nL-00Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-275" y="143"/>
-        </scene>
         <!--Auth View Controller-->
         <scene sceneID="WQQ-zF-7m1">
             <objects>
@@ -400,7 +381,6 @@ YP Black</string>
         <image name="noActive" width="42" height="42"/>
         <image name="share_button" width="50" height="50"/>
         <image name="tab_editorial_active" width="30" height="30"/>
-        <image name="tab_profile_active" width="30" height="30"/>
         <namedColor>
             <string key="name">
 YP Black</string>
