@@ -35,10 +35,14 @@ final class WebViewViewController: UIViewController {
     }
 
     //MARK: - Helpers
-    @IBAction private func didTapBackButton(_ sender: Any?) {
+    
+    
+    @IBAction func didTapBackButton(_ sender: UIButton) {
         delegate?.webViewViewControllerDidCancel(self)
-        navigationController?.popToRootViewController(animated: true)
     }
+
+//        //navigationController?.popToRootViewController(animated: true)
+
     
     private func fetchRequest() {
         guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString) else { return }

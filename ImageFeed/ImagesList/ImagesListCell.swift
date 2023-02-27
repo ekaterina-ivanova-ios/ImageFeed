@@ -3,10 +3,12 @@ import UIKit
 final class ImagesListCell: UITableViewCell {
     
     //MARK: - Properties
+    
     @IBOutlet private weak var imageCell: UIImageView!
     @IBOutlet private weak var likeButton: UIButton!
     @IBOutlet private weak var gradientView: UIView!
     @IBOutlet private weak var dateLabel: UILabel!
+    
     
     static let reuseIdentifier = "ImagesListCell"
     
