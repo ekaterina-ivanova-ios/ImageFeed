@@ -13,10 +13,16 @@ final class TabBarController: UITabBarController {
         let profileViewController = ProfileViewController()
 
         profileViewController.tabBarItem = UITabBarItem(
-            title: NSLocalizedString("Profile", comment: ""),
+            title: nil,
             image: UIImage(named: "tab_profile_active"),
             selectedImage: nil
         )
+        
+        profileViewController.tabBarItem.imageInsets = UIEdgeInsets(
+            top: 5, left: 0,
+            bottom: -5, right: 0
+        )
+        
         self.viewControllers = [imagesListViewController, profileViewController]
     }
     
