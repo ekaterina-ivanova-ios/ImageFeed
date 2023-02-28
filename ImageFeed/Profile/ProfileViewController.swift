@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
     }()
     private lazy var logoutButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "ipad.and.arrow.forward"), for: .normal)
+        button.setImage(UIImage(named: "logOut"), for: .normal)
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         button.tintColor = .ypRed
         button.translatesAutoresizingMaskIntoConstraints = false

@@ -8,15 +8,18 @@ final class SplashViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private let profileService = ProfileService()
+    private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
     
-    private let oauth2Service = OAuth2Service()
+    //private let oauth2Service = OAuth2Service()
     private let oauth2TokenStorage = OAuth2TokenStorage()
+    
+    //MARK: LifeCycle
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showUserScenario()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
