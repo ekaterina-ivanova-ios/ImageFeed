@@ -36,7 +36,6 @@ final class ProfileService: ProfileServiceProtocol {
         let session = urlSession
         let task = session.objectTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
-            
             switch result {
             case .success(let profileResult):
                 let currentProfile = self.convertFrom(profileResult: profileResult)

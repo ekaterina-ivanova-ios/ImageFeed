@@ -73,19 +73,21 @@ YP Black</string>
                                                         <color key="titleColor" name="YP White (Alpha 50)"/>
                                                     </state>
                                                 </button>
-                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-Qe-nln" userLabel="gradient">
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-Qe-nln" userLabel="gradient">
                                                     <rect key="frame" x="28" y="179" width="342" height="30"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 Июля 2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuF-Di-5my" userLabel="Date Label">
-                                                            <rect key="frame" x="81" y="56" width="77" height="14.666666666666742"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Июля 2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuF-Di-5my" userLabel="Date Label">
+                                                            <rect key="frame" x="8" y="7.3333333333333419" width="77" height="14.666666666666661"/>
                                                             <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="13"/>
                                                             <color key="textColor" name="YP White"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NuF-Di-5my" secondAttribute="trailing" id="3ss-C6-ZSy"/>
+                                                        <constraint firstAttribute="bottom" secondItem="NuF-Di-5my" secondAttribute="bottom" constant="8" id="HDe-Kc-kv5"/>
                                                         <constraint firstAttribute="height" constant="30" id="P9d-wz-O6c"/>
+                                                        <constraint firstItem="NuF-Di-5my" firstAttribute="leading" secondItem="UYr-Qe-nln" secondAttribute="leading" constant="8" id="Wuv-Be-T3T"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
