@@ -1,5 +1,25 @@
-import Foundation
 
-final class OAuth2TokenStorage {
-    var token: String? // TODO [Sprint 10]
+import Foundation
+import SwiftKeychainWrapper
+
+class OAuth2TokenStorage {
+    
+    private let keychainWrapper = KeychainWrapper.standard
+
+    private enum Keys: String {
+        case bearerToken
+    }
+
+    var bearerToken: String? {
+        get {
+            keychainWrapper.string(forKey: Keys.bearerToken.rawValue)
+        }
+        set {
+            if let newValue {
+                keychainWrapper.set(newValue, forKey: Keys.bearerToken.rawValue)
+            } else {
+                keychainWrapper.removeObject(forKey: Keys.bearerToken.rawValue)
+            }
+        }
+    }
 }
