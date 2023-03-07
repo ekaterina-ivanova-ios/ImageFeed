@@ -11,7 +11,7 @@
 		1F1832E829B7453100B19DA4 /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1832E729B7453100B19DA4 /* PhotoResult.swift */; };
 		1F1832EA29B7462700B19DA4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1832E929B7462700B19DA4 /* Photo.swift */; };
 		1F1832EC29B7465100B19DA4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1832EB29B7465100B19DA4 /* Date.swift */; };
-		1F1832F429B7489900B19DA4 /* ImageListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1832F329B7489900B19DA4 /* ImageListServiceTests.swift */; };
+		1F1832FB29B7540F00B19DA4 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1832FA29B7540F00B19DA4 /* Gradient.swift */; };
 		1F25864B29756144004294EA /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864A29756144004294EA /* OAuth2Service.swift */; };
 		1F25864D29756157004294EA /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864C29756157004294EA /* OAuth2TokenStorage.swift */; };
 		1F258650297566C8004294EA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F25864F297566C7004294EA /* SplashViewController.swift */; };
@@ -61,7 +61,7 @@
 		1F1832E929B7462700B19DA4 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		1F1832EB29B7465100B19DA4 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		1F1832F129B7489900B19DA4 /* ImageFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F1832F329B7489900B19DA4 /* ImageListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListServiceTests.swift; sourceTree = "<group>"; };
+		1F1832FA29B7540F00B19DA4 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		1F25864A29756144004294EA /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
 		1F25864C29756157004294EA /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		1F25864F297566C7004294EA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -115,14 +115,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F1832F229B7489900B19DA4 /* ImageFeedTests */ = {
-			isa = PBXGroup;
-			children = (
-				1F1832F329B7489900B19DA4 /* ImageListServiceTests.swift */,
-			);
-			path = ImageFeedTests;
-			sourceTree = "<group>";
-		};
 		1F25864829756119004294EA /* ServiceAccessLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				1F276152292C000800B993CD /* ImageFeed */,
-				1F1832F229B7489900B19DA4 /* ImageFeedTests */,
 				1F276151292C000800B993CD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -249,6 +240,7 @@
 				1F6FAA1B299A3D4D00CC990E /* UIViewController.swift */,
 				1F6FAA26299A5C7100CC990E /* UIImage.swift */,
 				1F1832EB29B7465100B19DA4 /* Date.swift */,
+				1F1832FA29B7540F00B19DA4 /* Gradient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -364,7 +356,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F1832F429B7489900B19DA4 /* ImageListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +368,7 @@
 				1F2AC0A62969B954007B5B88 /* WebViewViewController.swift in Sources */,
 				1FAA12932938CA5B000ED239 /* ProfileViewController.swift in Sources */,
 				1F6FAA1C299A3D4D00CC990E /* UIViewController.swift in Sources */,
+				1F1832FB29B7540F00B19DA4 /* Gradient.swift in Sources */,
 				1F1832EC29B7465100B19DA4 /* Date.swift in Sources */,
 				1F2AC0A1295D86D4007B5B88 /* Constants.swift in Sources */,
 				1F276158292C000800B993CD /* ImagesListViewController.swift in Sources */,

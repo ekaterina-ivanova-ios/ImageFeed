@@ -72,6 +72,9 @@ YP Black</string>
                                                     <state key="normal" image="noActive">
                                                         <color key="titleColor" name="YP White (Alpha 50)"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="udH-Ec-TzX" eventType="touchUpInside" id="VbB-Ie-C8n"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="UYr-Qe-nln" userLabel="gradient">
                                                     <rect key="frame" x="28" y="179" width="342" height="30"/>

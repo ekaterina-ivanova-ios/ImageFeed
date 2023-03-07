@@ -40,9 +40,13 @@ extension AuthViewController: WebViewViewControllerDelegate {
                 case .success(let accessToken):
                     self.saveAccessToken(accessToken)
                     self.delegate?.didAuthenticate()
-                case .failure(let error):
-                    print(error)
-                    self.showAlert(nil)
+                case .failure:
+                    UIBlockingProgressHUD.dismiss()
+                    self.showSingleAlert(
+                        title: "Что-то пошло не так(",
+                        message: "Не удалось войти в систему",
+                        nil
+                    )
                 }
             }
         }
