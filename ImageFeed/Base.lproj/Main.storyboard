@@ -118,10 +118,6 @@ YP Black</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="x9v-uw-GJ9"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="6Qg-wf-n3W"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

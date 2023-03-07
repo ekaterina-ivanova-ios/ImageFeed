@@ -48,6 +48,7 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
+    private let oAuth2TokenStorage = OAuth2TokenStorage()
 
     private var profileImageServiceObserver: NSObjectProtocol?
     
@@ -136,9 +137,28 @@ class ProfileViewController: UIViewController {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
         }
     }
+    
+    private func logoutFromProfile() {
+        oAuth2TokenStorage.bearerToken = nil
+        WebViewViewController.clean()
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let authViewController = storyboard.instantiateViewController(
+            withIdentifier: "AuthViewController"
+        ) as? AuthViewController else { return }
+        authViewController.modalPresentationStyle = .fullScreen
+        present(authViewController, animated: true)
+    }
 
     @objc private func didTapButton() {
-        
+        showDoubleAlert(
+            title: "До встречи!",
+            message: "Уверены, что хотите выйти?",
+            firstAction: "Да",
+            secondAction: "Нет"
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.logoutFromProfile()
+        } _: { _ in }
     }
     
 }
