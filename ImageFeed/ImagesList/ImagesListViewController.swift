@@ -54,3 +54,14 @@ extension ImagesListViewController: UITableViewDelegate {
         performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
     }
 }
+
+//MARK: - fetchPhotosNextPageн
+extension ImagesListViewController {
+    func tableView(
+      _ tableView: UITableView,
+      willDisplay cell: UITableViewCell,
+      forRowAt indexPath: IndexPath
+    ) {
+        // ...
+    }
+}
