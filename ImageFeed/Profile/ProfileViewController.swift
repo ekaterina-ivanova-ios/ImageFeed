@@ -6,7 +6,6 @@ class ProfileViewController: UIViewController {
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Photo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

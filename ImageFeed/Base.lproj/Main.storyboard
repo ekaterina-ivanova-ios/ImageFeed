@@ -44,10 +44,7 @@ YP Black</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JB0-QR-WO4">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <color key="backgroundColor">
-                                    <string key="name">
-YP Black</string>
-                                </color>
+                                <color key="backgroundColor" name="YP Black"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="ImagesListCell" rowHeight="228" id="udH-Ec-TzX" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="390" height="228"/>
@@ -198,10 +195,7 @@ YP Black</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S5f-Xt-HOl"/>
-                        <color key="backgroundColor">
-                            <string key="name">
-YP Black</string>
-                        </color>
+                        <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstItem="Lmp-ny-eWS" firstAttribute="top" secondItem="S5f-Xt-HOl" secondAttribute="top" constant="8" id="8tj-Zb-ffd"/>
                             <constraint firstItem="TJA-Gr-Td2" firstAttribute="trailing" secondItem="S5f-Xt-HOl" secondAttribute="trailing" id="9il-lK-Ggr"/>
@@ -261,10 +255,7 @@ YP Black</string>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B5Y-bU-Ta8"/>
-                        <color key="backgroundColor">
-                            <string key="name">
-YP Black</string>
-                        </color>
+                        <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstItem="jQ8-4A-Ysw" firstAttribute="centerY" secondItem="N30-3g-a7z" secondAttribute="centerY" id="5hf-Na-tzn"/>
                             <constraint firstItem="eEH-Zi-yA6" firstAttribute="leading" secondItem="B5Y-bU-Ta8" secondAttribute="leading" constant="16" id="8Ld-7N-XWW"/>

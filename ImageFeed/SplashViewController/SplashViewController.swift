@@ -18,8 +18,21 @@ final class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setupConfigurationUI()
         showUserScenario()
         
+    }
+    
+    //MARK: - Helpers
+    private func setupConfigurationUI() {
+        view.backgroundColor = .ypBlack
+        
+        view.addSubview(logoImageView)
+        
+        NSLayoutConstraint.activate([
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
