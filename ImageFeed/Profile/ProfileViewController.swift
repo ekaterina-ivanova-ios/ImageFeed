@@ -54,6 +54,7 @@ class ProfileViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        showGradientAnimation()
         setupProfileInfo(profileService.profile ?? Profile(
             username: "",
             name: "",
@@ -101,9 +102,40 @@ class ProfileViewController: UIViewController {
         ])
     }
     
+    private func showGradientAnimation() {
+        let imageGradient = CAGradientLayer().createLoadingGradient(
+            width: 70, height: 70, radius: 35
+        )
+        let nameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 223, height: 18, radius: 9
+        )
+        let usernameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 69, height: 18, radius: 9
+        )
+        let statusLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 67, height: 18, radius: 9
+        )
+
+        profileImageView.layer.addSublayer(imageGradient)
+        nameLabel.layer.addSublayer(nameLabelGradient)
+        usernameLabel.layer.addSublayer(usernameLabelGradient)
+        statusLabel.layer.addSublayer(statusLabelGradient)
+    }
+    
+    private func removeGradientAnimation(_ views: [UIView]) {
+        for view in views {
+            view.layer.sublayers?.removeAll()
+        }
+    }
+    
     private func setupProfileInfo(_ profile: Profile) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.removeGradientAnimation(
+                [self.nameLabel,
+                 self.usernameLabel,
+                 self.statusLabel]
+            )
             self.nameLabel.text = profile.name
             self.usernameLabel.text = profile.loginName
             self.statusLabel.text = profile.bio
@@ -124,16 +156,13 @@ class ProfileViewController: UIViewController {
                 with: url,
                 placeholder: UIImage(named: "person.crop.circle.fill"),
                 options: [.processor(processor)]
-            ) { result in
-                switch result {
-                case .success(let value):
-                    print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
-                case .failure(let error):
-                    print(error)
-                }
+            ) { [weak self] result in
+                guard let self = self else { return }
+                self.removeGradientAnimation([self.profileImageView])
             }
         } else {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
+            self.removeGradientAnimation([self.profileImageView])
         }
     }
     
