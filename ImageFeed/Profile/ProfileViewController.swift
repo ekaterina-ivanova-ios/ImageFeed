@@ -156,9 +156,14 @@ class ProfileViewController: UIViewController {
                 with: url,
                 placeholder: UIImage(named: "person.crop.circle.fill"),
                 options: [.processor(processor)]
-            ) { [weak self] result in
-                guard let self = self else { return }
-                self.removeGradientAnimation([self.profileImageView])
+            ) { result in
+                switch result {
+                case .success(let value):
+                    print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
+                    self.removeGradientAnimation([self.profileImageView])
+                case .failure(let error):
+                    print(error)
+                }
             }
         } else {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
