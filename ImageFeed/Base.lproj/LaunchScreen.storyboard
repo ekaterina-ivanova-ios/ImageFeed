@@ -26,10 +26,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor">
-                            <string key="name">
-YP Black</string>
-                        </color>
+                        <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstItem="LZr-cU-hJD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2Xi-bf-l1F"/>
                             <constraint firstItem="LZr-cU-hJD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RQF-PR-OUn"/>
@@ -43,10 +40,8 @@ YP Black</string>
     </scenes>
     <resources>
         <image name="launchScreenLogo" width="75" height="78"/>
-        <namedColor>
-            <string key="name">
-YP Black</string>
-            <color red="0.1031767651" green="0.10832791780000001" blue="0.1335714757" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="YP Black">
+            <color red="0.10300000011920929" green="0.1080000028014183" blue="0.13400000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

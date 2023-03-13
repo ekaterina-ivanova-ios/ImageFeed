@@ -6,7 +6,6 @@ class ProfileViewController: UIViewController {
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Photo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -48,12 +47,14 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
+    private let oAuth2TokenStorage = OAuth2TokenStorage()
 
     private var profileImageServiceObserver: NSObjectProtocol?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        showGradientAnimation()
         setupProfileInfo(profileService.profile ?? Profile(
             username: "",
             name: "",
@@ -101,9 +102,40 @@ class ProfileViewController: UIViewController {
         ])
     }
     
+    private func showGradientAnimation() {
+        let imageGradient = CAGradientLayer().createLoadingGradient(
+            width: 70, height: 70, radius: 35
+        )
+        let nameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 223, height: 18, radius: 9
+        )
+        let usernameLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 69, height: 18, radius: 9
+        )
+        let statusLabelGradient = CAGradientLayer().createLoadingGradient(
+            width: 67, height: 18, radius: 9
+        )
+
+        profileImageView.layer.addSublayer(imageGradient)
+        nameLabel.layer.addSublayer(nameLabelGradient)
+        usernameLabel.layer.addSublayer(usernameLabelGradient)
+        statusLabel.layer.addSublayer(statusLabelGradient)
+    }
+    
+    private func removeGradientAnimation(_ views: [UIView]) {
+        for view in views {
+            view.layer.sublayers?.removeAll()
+        }
+    }
+    
     private func setupProfileInfo(_ profile: Profile) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.removeGradientAnimation(
+                [self.nameLabel,
+                 self.usernameLabel,
+                 self.statusLabel]
+            )
             self.nameLabel.text = profile.name
             self.usernameLabel.text = profile.loginName
             self.statusLabel.text = profile.bio
@@ -128,17 +160,38 @@ class ProfileViewController: UIViewController {
                 switch result {
                 case .success(let value):
                     print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
+                    self.removeGradientAnimation([self.profileImageView])
                 case .failure(let error):
                     print(error)
                 }
             }
         } else {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
+            self.removeGradientAnimation([self.profileImageView])
         }
+    }
+    
+    private func logoutFromProfile() {
+        oAuth2TokenStorage.bearerToken = nil
+        WebViewViewController.clean()
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let authViewController = storyboard.instantiateViewController(
+            withIdentifier: "AuthViewController"
+        ) as? AuthViewController else { return }
+        authViewController.modalPresentationStyle = .fullScreen
+        present(authViewController, animated: true)
     }
 
     @objc private func didTapButton() {
-        
+        showDoubleAlert(
+            title: "До встречи!",
+            message: "Уверены, что хотите выйти?",
+            firstAction: "Да",
+            secondAction: "Нет"
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.logoutFromProfile()
+        } _: { _ in }
     }
     
 }
