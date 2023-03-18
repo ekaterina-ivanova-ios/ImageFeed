@@ -124,10 +124,14 @@ class ProfileViewController: UIViewController {
     
     private func removeGradientAnimation(_ views: [UIView]) {
         for view in views {
-            view.layer.sublayers?.removeAll()
+            view.layer.sublayers?.forEach({ sl in
+                if sl is CAGradientLayer {
+                    sl.removeFromSuperlayer()
+                }
+            })
         }
     }
-    
+
     private func setupProfileInfo(_ profile: Profile) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
