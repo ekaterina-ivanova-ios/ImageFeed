@@ -65,6 +65,7 @@ YP Black</string>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKk-V7-6Qx" userLabel="Like Button">
                                                     <rect key="frame" x="328" y="11" width="42" height="42"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="likeButton"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="noActive">
                                                         <color key="titleColor" name="YP White (Alpha 50)"/>
@@ -183,6 +184,7 @@ YP Black</string>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmp-ny-eWS" userLabel="Back">
                                 <rect key="frame" x="8" y="55" width="48" height="48"/>
+                                <accessibility key="accessibilityConfiguration" identifier="nav_back_button_white"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="4va-5x-1sb"/>
                                     <constraint firstAttribute="height" constant="48" id="FTi-VG-062"/>
@@ -228,6 +230,7 @@ YP Black</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEH-Zi-yA6">
                                 <rect key="frame" x="16" y="672" width="358" height="48"/>
                                 <color key="backgroundColor" name="YP White"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Authenticate"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="hDg-bV-Weh"/>
                                 </constraints>
@@ -273,7 +276,7 @@ YP Black</string>
         <!--Web View View Controller-->
         <scene sceneID="l07-xO-Roe">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="PgM-LA-415" customClass="WebViewViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewViewController" id="PgM-LA-415" customClass="WebViewViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rmo-5T-1Zi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

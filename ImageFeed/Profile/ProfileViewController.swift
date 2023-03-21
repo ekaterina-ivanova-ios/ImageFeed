@@ -54,6 +54,7 @@ class ProfileViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        logoutButton.accessibilityIdentifier = "logoutButton"
         showGradientAnimation()
         setupProfileInfo(profileService.profile ?? Profile(
             username: "",

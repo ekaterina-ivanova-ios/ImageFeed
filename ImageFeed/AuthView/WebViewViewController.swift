@@ -33,6 +33,7 @@ final class WebViewViewController: UIViewController, WebViewViewControllerProtoc
         super.viewDidLoad()
         configureBackBarButton()
         webView.navigationDelegate = self
+        webView.accessibilityIdentifier = "UnsplashWebView"
         presenter?.viewDidLoad()
         
         estimatedProgressObservation = webView.observe(
