@@ -12,6 +12,8 @@ final class ImagesListService {
     
     private let token = OAuth2TokenStorage().bearerToken
     
+    private let authConfiguration = AuthConfiguration.standard
+    
     func fetchPhotosNextPage() {
         if task != nil { return }
         
@@ -22,7 +24,7 @@ final class ImagesListService {
             nextPage = 1
         }
         
-        guard var urlComponents = URLComponents(string: Constants.unsplashGetListPhotos) else { return }
+        guard var urlComponents = URLComponents(string: authConfiguration.unsplashGetListPhotos) else { return }
         urlComponents.queryItems = [
             URLQueryItem(name: "page", value: "\(nextPage)")
         ]
@@ -59,7 +61,7 @@ final class ImagesListService {
     func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
         if task != nil { return }
         
-        guard let url = URL(string: "\(Constants.unsplashGetListPhotos)/\(photoId)/like"),
+        guard let url = URL(string: "\(authConfiguration.unsplashGetListPhotos)/\(photoId)/like"),
               let token = token
         else { return }
         

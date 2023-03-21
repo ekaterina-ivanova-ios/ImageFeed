@@ -16,12 +16,14 @@ final class OAuth2Service: OAuth2ServiceProtocol {
     private var task: URLSessionTask?
     private var lastCode: String?
     
+    private let authConfiguration = AuthConfiguration.standard
+    
     private func makeRequest(code: String) -> URLRequest {
-        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeTokenURLString) else { return URLRequest(url: URL(fileURLWithPath: "")) }
+        guard var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeTokenURLString) else { return URLRequest(url: URL(fileURLWithPath: "")) }
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "client_secret", value: Constants.secretKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
+            URLQueryItem(name: "client_secret", value: authConfiguration.secretKey),
+            URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]

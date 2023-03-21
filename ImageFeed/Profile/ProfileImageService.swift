@@ -10,8 +10,10 @@ final class ProfileImageService {
     
     private(set) var avatarURL: String?
     
+    private let authConfiguration = AuthConfiguration.standard
+    
     private func makeRequest(_ token: String, username: String) -> URLRequest {
-        guard let url = URL(string: Constants.unsplashGetProfileImage + username) else { return URLRequest(url: URL(fileURLWithPath: "")) }
+        guard let url = URL(string: authConfiguration.unsplashGetProfileImage + username) else { return URLRequest(url: URL(fileURLWithPath: "")) }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
