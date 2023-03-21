@@ -1,7 +1,9 @@
 import UIKit
 import Kingfisher
 
-class ProfileViewController: UIViewController {
+protocol ProfileViewControllerProtocol: AnyObject {}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
 
     //MARK: - Properties
     private lazy var profileImageView: UIImageView = {
@@ -13,7 +15,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.config(
             for: label,
-            text: "Екатерина Новикова",
+            text: "",
             fontSize: 23,
             textColor: .ypWhite)
         return label
@@ -22,7 +24,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.config(
             for: label,
-            text: "@ekaterina_nov",
+            text: "",
             fontSize: 13,
             textColor: .ypGray)
         return label
@@ -31,7 +33,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.config(
             for: label,
-            text: "Hello, world!",
+            text: "",
             fontSize: 13,
             textColor: .ypWhite)
         return label
@@ -45,9 +47,9 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    private let profileService = ProfileService.shared
-    private let profileImageService = ProfileImageService.shared
-    private let oAuth2TokenStorage = OAuth2TokenStorage()
+    lazy var presenter: ProfileViewPresenterProtocol = {
+        ProfileViewPresenter(viewController: self)
+    }()
 
     private var profileImageServiceObserver: NSObjectProtocol?
     
@@ -55,13 +57,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logoutButton.accessibilityIdentifier = "logoutButton"
+        
         showGradientAnimation()
-        setupProfileInfo(profileService.profile ?? Profile(
-            username: "",
-            name: "",
-            loginName: "",
-            bio: ""
-        ))
+        setupProfileInfo()
         view.backgroundColor = .ypBlack
         addSubviews()
         setupConstraints()
@@ -133,42 +131,33 @@ class ProfileViewController: UIViewController {
         }
     }
 
-    private func setupProfileInfo(_ profile: Profile) {
+    private func setupProfileInfo() {
+        guard let profile = presenter.getProfile() else { return }
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.removeGradientAnimation(
-                [self.nameLabel,
-                 self.usernameLabel,
-                 self.statusLabel]
-            )
-            self.nameLabel.text = profile.name
-            self.usernameLabel.text = profile.loginName
-            self.statusLabel.text = profile.bio
+            self.removeGradientAnimation([self.nameLabel, self.usernameLabel, self.statusLabel])
+            self.nameLabel.text = profile.name ?? ""
+            self.usernameLabel.text = "@" + (profile.username ?? "")
+            self.statusLabel.text = profile.bio ?? ""
         }
     }
     
     private func updateAvatar() {
-        if let profileImageURL = profileImageService.avatarURL,
-           let url = URL(string: profileImageURL) {
+        if let url = presenter.getUrlAvatar() {
 
             let cache = ImageCache.default
             cache.clearMemoryCache()
             cache.clearDiskCache()
-
-            let processor = RoundCornerImageProcessor(cornerRadius: (profileImageView.image?.size.width ?? 0) / 2)
-            self.profileImageView.kf.indicatorType = .activity
+            
+            let processor = RoundCornerImageProcessor(cornerRadius: (35))
             self.profileImageView.kf.setImage(
                 with: url,
                 placeholder: UIImage(named: "person.crop.circle.fill"),
                 options: [.processor(processor)]
-            ) { result in
-                switch result {
-                case .success(let value):
-                    print("Аватарка \(value.image) была успешно загружена и заменена в профиле")
-                    self.removeGradientAnimation([self.profileImageView])
-                case .failure(let error):
-                    print(error)
-                }
+            ) { [weak self] result in
+                guard let self = self else { return }
+                self.removeGradientAnimation([self.profileImageView])
             }
         } else {
             profileImageView.image = UIImage(named: "person.crop.circle.fill")
@@ -177,8 +166,8 @@ class ProfileViewController: UIViewController {
     }
     
     private func logoutFromProfile() {
-        oAuth2TokenStorage.bearerToken = nil
-        WebViewViewController.clean()
+        presenter.logout()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         guard let authViewController = storyboard.instantiateViewController(
             withIdentifier: "AuthViewController"
@@ -189,8 +178,8 @@ class ProfileViewController: UIViewController {
 
     @objc private func didTapButton() {
         showDoubleAlert(
-            title: "До встречи!",
-            message: "Уверены, что хотите выйти?",
+            title: "Пока, пока!",
+            message: "Уверены что хотите выйти?",
             firstAction: "Да",
             secondAction: "Нет"
         ) { [weak self] _ in
@@ -198,5 +187,4 @@ class ProfileViewController: UIViewController {
             self.logoutFromProfile()
         } _: { _ in }
     }
-    
 }

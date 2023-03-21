@@ -1,4 +1,5 @@
-import ImageFeed
+@testable import ImageFeed
+
 import XCTest
 
 final class ProfileViewPresenterSpy: ProfileViewPresenterProtocol {

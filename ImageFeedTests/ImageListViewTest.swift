@@ -1,4 +1,4 @@
-import ImageFeed
+@testable import ImageFeed
 import XCTest
 
 final class ImageListViewPresenterSpy: ImageListViewPresenterProtocol {
