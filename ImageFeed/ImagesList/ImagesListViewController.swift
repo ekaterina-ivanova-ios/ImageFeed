@@ -2,7 +2,9 @@ import UIKit
 
 import UIKit
 
-final class ImagesListViewController: UIViewController {
+protocol ImagesListViewControllerProtocol: AnyObject {}
+
+final class ImagesListViewController: UIViewController, ImagesListViewControllerProtocol {
     
     //MARK: - Properties
     @IBOutlet private var tableView: UITableView!
@@ -11,8 +13,11 @@ final class ImagesListViewController: UIViewController {
     private var photosName = [String]()
     private var photos: [Photo] = []
     
-    private let imageListService = ImagesListService.shared
     private var imageListServiceObserver: NSObjectProtocol?
+    
+    lazy var presenter: ImageListViewPresenterProtocol = {
+        ImageListViewPresenter(viewController: self)
+    }()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -31,7 +36,8 @@ final class ImagesListViewController: UIViewController {
                         guard let self = self else { return }
                         self.updateTableViewAnimated()
                     }
-        imageListService.fetchPhotosNextPage()
+        updateTableViewAnimated()
+        presenter.sendPhotosNextPage()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,9 +55,9 @@ final class ImagesListViewController: UIViewController {
     
     private func updateTableViewAnimated() {
         let currentCount = photos.count
-        let newCount = imageListService.photos.count
+        let newCount = presenter.getPhotos().count
         
-        photos = imageListService.photos
+        photos = presenter.getPhotos()
         
         if currentCount != newCount {
             tableView.performBatchUpdates {
@@ -87,7 +93,7 @@ extension ImagesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row + 1 == photos.count {
-            imageListService.fetchPhotosNextPage()
+            presenter.sendPhotosNextPage()
         }
     }
     
@@ -99,15 +105,15 @@ extension ImagesListViewController: UITableViewDelegate {
 //MARK: - ImagesListCellDelegate
 extension ImagesListViewController: ImagesListCellDelegate {
     func imageListCellDidTapLike(_ cell: ImagesListCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        guard let indexPath = tableView?.indexPath(for: cell) else { return }
         let photo = photos[indexPath.row]
         UIBlockingProgressHUD.show()
-        imageListService.changeLike(photoId: photo.id, isLike: !photo.isLiked) { [weak self] result in
+        presenter.sendChangedLike(photo: photo, completion: { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(_):
-                    self.photos = self.imageListService.photos
+                    self.photos = self.presenter.getPhotos()
                     cell.setIsLiked(self.photos[indexPath.row].isLiked)
                 case .failure(let error):
                     print(error)
@@ -119,6 +125,6 @@ extension ImagesListViewController: ImagesListCellDelegate {
                 }
                 UIBlockingProgressHUD.dismiss()
             }
-        }
+        })
     }
 }
